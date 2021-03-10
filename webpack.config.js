@@ -1,5 +1,7 @@
 const path = require('path');
 const webpack = require("webpack");
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
+
 //The main configuration object within our file. within this object that tell webpack what to do.
 module.exports = {
     //root of the bundle and the beginning of the dependency graph
@@ -15,6 +17,9 @@ module.exports = {
             $: "jquery",
             jQuery: "jquery"
           }),
+          new BundleAnalyzerPlugin({
+            analyzerMode: "static", // outputs to an HTML file called report.html in the dist folder
+          })
       ],
       //the mode in which we want webpack to run. By default, webpack wants to run in production mode.
       mode: 'development'
