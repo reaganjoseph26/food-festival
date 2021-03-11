@@ -4,12 +4,19 @@ const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPl
 
 //The main configuration object within our file. within this object that tell webpack what to do.
 module.exports = {
-    //root of the bundle and the beginning of the dependency graph
-    entry: './assets/js/script.js',
+    //entry points so webpack knows where to start dependencies
+    entry: {
+      app: "./assets/js/script.js",
+      events: "./assets/js/events.js",
+      schedule: "./assets/js/schedule.js",
+      tickets: "./assets/js/tickets.js"
+    },
+      
     //bundle that code and output that bundled code to a folder
     output: {
-        path: path.resolve(__dirname, 'dist'),
-        filename: 'main.bundle.js'
+        filename: '[name].bundle.js',
+        path: __dirname + '/dist'
+        
       },
       //directs webpack what to do. For example letting it know to use jQuery package
       plugins: [
